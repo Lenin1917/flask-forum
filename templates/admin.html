@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="logo">Панель администрирования</div>
+<hr />
+
+<br/>
+<div class="postarea">
+
+    <form id="postform" 
+    	  action="/do_perm" 
+    	  method="post">
+
+        <input type="text"
+        	   name='login'
+        	   size="35" 
+        	   placeholder="Введите имя пользователя" />
+        	   
+        <input type="submit" 
+        	   name="new_perm" 
+        	   value="Изменить полномочия" />
+    </form>
+</div>
+<br/>
+
+<table class="tg">
+{% for i in users %}
+  <tr>
+    <td class="tg-0pky">{{ i[0] }}<br></td>
+    <td class="tg-0pky">{{ i[2] }}</td>
+  </tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

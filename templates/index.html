@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="logo">Форум</div>
+<hr />
+    
+    <div class="postarea">
+        <form id="postform" action="/do_thread" method="post">            
+            <table width="1%">
+                <tbody>
+                    <tr>
+                        <td class="postblock">Тема</td>
+                        <td>
+                            <input type="text" name='title' size="35" />
+                            <input type="submit" value="Отправить" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="postblock">Сообщение</td>
+                        <td>
+                            <textarea cols="60" name='content' rows="6"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+{% for t in thread %}
+    <hr />
+    <div id="thread-{{ t.id }}">
+        <br />
+        <a name="{{ t.id }}"></a>
+        <label>
+            <span class="filetitle"> {{ t.title }}</span> 
+            <span class="postername"> {{ t.author }}</span> 
+            {{ t.date }}
+        </label>
+        Номер темы &#x2116; {{ t.id }}
+        [<a href="/thread/{{ t.id }}">Посмотреть тему</a>]
+        
+        {% if t.editable  %}
+            <a href="/edit_thread/{{ t.id }}">Edit</a>
+        {% endif %}
+        
+        <span class="omittedposts"> 
+		Количетсво сообщений: {{ t.row }}
+        {% if t.last == None %}
+        {% else %}
+            Последнее написано {{ t.last }}
+        {% endif %} 
+         
+	</span>
+    </div>
+
+    <!--thread-->
+{% endfor %}
+    
+{% endblock %}

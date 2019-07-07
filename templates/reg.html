@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+</head>
+<style>
+h1 {
+    text-align:center;
+}
+#form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    width: 300px;
+    text-align: right;
+    border: 1px solid black;
+    padding: 1cm;
+}
+#form input {
+    width: 200px;
+}
+#form>div {
+    margin-top: 10px;
+}
+</style>
+<body>
+<h1>Регистрация</h1>
+<div id=form>
+<form method=post action='/do_register'>
+<div>Логин <input type=text name=login></div>
+<div>Пароль <input type=password name=pass></div>
+<div>Еще раз <input type=password name=repeat></div>
+<div><button>Зарегистрироваться</button></div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block back %}{% endblock %}
+{% block content %}
+
+<div class="logo">Изменить сообщение</div>
+<a href="/thread/{{ thread_id }}">Отменить</a>
+<hr />
+
+
+    <div class="postarea">
+
+        <form id="postform" action="/thread/{{ thread_id }}/edit/change" method="post">
+
+            <table width="1%">
+                <tbody>
+                    <tr>
+                        <td class="postblock">Новая тема</td>
+                        <td>
+                            <input type="text" name='title' size="35" value='{{ comments[2] }}' />
+                            <input type="hidden" name="id" value="{{ id }}">
+                            <input type="submit" value="Отправить" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="postblock">Новое сообщение</td>
+                        <td>
+                            <textarea cols="60" name='content' rows="6">{{ comments[3] }}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <form action="/thread/{{ thread_id }}/edit/delete" method="post">
+            <input type="hidden" name="id" value="{{ id }}">
+            <input type="submit" value="Удалить">
+        </form> 
+    </div>
+    <div class="postarea"> 
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block back %}{% endblock %}
+{% block content %}
+
+<div class="logo">Изменить Тему</div>
+<hr />
+
+<div class="postarea">
+        <form id="postform" action="/edit_thread/change" method="post">
+        <input type="hidden" name="id" value="{{ id }}">             
+            <table width="1%">
+                <tbody>
+                    <tr>
+                        <td class="postblock">Тема</td>
+                        <td>
+                            <input type="text" name='title' size="35"  value='{{ title }}'/>
+                            <input type="submit" value="Отправить" />
+
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+                            {% if perm %}
+                            <form action="/edit_thread/delete" method="post">
+                                <input type="hidden" name="id" value="{{ id }}">
+                                <input type="submit" value="Удалить" >
+                            </form>
+                            {% endif %}
+    </div>
+
+{% endblock %}

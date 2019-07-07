@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+</head>
+<style>
+h1 {
+    text-align: center;
+}
+div.date {
+    font-style: italic;
+}
+div#new {
+    float: left;
+}
+div#logout {
+    float: right;
+}
+</style>
+<body>
+
+<div id=new><a href='/new'>Новая</a></div>
+<div id=logout>
+<form method=post action='/do_logout'>
+<button type=submit>Выход</button>
+</form>
+</div>
+<h1>Дневник {{ user }}</h1>
+{% for m in messages %}
+<div>
+<h2>{{ m[0] }}</h2>
+<div class=date>{{ m[1] }}</div>
+<p>
+{{ m[2] }}
+</p>
+</div>
+{% endfor %}
+</body>
+</html>

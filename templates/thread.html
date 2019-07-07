@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+  
+{% block content %}
+  
+<div class="logo">ТЕМА {{ thread }}</div>
+<a href="#postform"> Написать сообщение</a>
+<hr />
+
+
+{% for t in comments %}
+
+<div> 
+    <br>
+    <label>
+        <span class="filetitle">{{ t.title }}</span> 
+        <span class="postername">{{ t.author }}</span> 
+        {{ t.date }}
+    </label>
+    {% if t.editable %}
+        <a name="meh" value="message" href="/edit/{{ t.id }}">Edit</a>
+    {% endif %}
+    <blockquote>
+        {{ t.content }} 
+    </blockquote>
+<hr />
+</div>
+{% endfor %}
+
+    <div class="postarea">
+        <form id="postform" action="/thread/{{ thread_id }}/do_comment" method="post">            
+            <table width="1%">
+                <tbody>
+                    <tr>
+                        <td class="postblock">Тема</td>
+                        <td>
+                            <input type="text" name='title' size="35" />
+                            <input type="submit" value="Отправить" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="postblock">Сообщение</td>
+                        <td>
+                            <textarea cols="60" name='content' rows="6"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+{% endblock %}
